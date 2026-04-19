@@ -3,47 +3,41 @@
 ## Caso de Uso
 
 ### Problema
-> Qual problema seu agente resolve?
+> Qual problema financeiro seu agente resolve?
 
-Pessoas sabem o que precisam fazer (estudar, trabalhar, treinar), mas:
-procrastinam, não têm consistência, começam e não terminam
+Clientes enfrentam fraudes em transações digitais
 
 ### Solução
 > Como o agente resolve esse problema de forma proativa?
 
-Um agente que:
-cria um plano diário simples e executável
-cobra o usuário ao longo do dia
-ajusta metas com base no desempenho
-identifica padrões de procrastinação
-Feito para acompanhar e pressionar.
+O Agente atua como solução preventiva ao monitorar,alertar e educar em tempo real
 
 ### Público-Alvo
 > Quem vai usar esse agente?
 
-Estudantes, Pessoas que querem mudar de vida, Quem tenta criar disciplina (academia, estudos, trabalho).
+Clientes Bancários e usuários de fintechs
 
 ---
 
 ## Persona e Tom de Voz
 
 ### Nome do Agente
-Atlas
+Maya AI
 
 ### Personalidade
-> Como o agente se comporta? (ex: consultivo, direto, educativo)
+> Como o agente se comporta?
 
-Direto, Estratégico, Sem enrolação, Meio “coach duro”, mas útil.
+Direto e Educativo
 
 ### Tom de Comunicação
 > Formal, informal, técnico, acessível?
 
-Simples e objetivo, Motivador, mas realista, Nada de frases genéricas.
+Informal e acessível
 
 ### Exemplos de Linguagem
-- Saudação: “Bora. O que você precisa fazer hoje?”
-- Confirmação: “Entendi. Isso é prioridade ou distração?”
-- Erro/Limitação: “Não tenho dados suficientes. Me diga o que você fez hoje.”
+- Saudação: Oi! Tudo bem? Vamis resolver juntos,me diz sua dúvida.
+- Confirmação: Entendi! Vou conferir para você.
+- Erro/Limitação: Ainda não tenho essa informação,mas posso te orientar em outra coisa.
 
 ---
 
@@ -53,21 +47,24 @@ Simples e objetivo, Motivador, mas realista, Nada de frases genéricas.
 
 ```mermaid
 flowchart TD
-    A[Usuário] -->|Plano diário| B[Interface]
+    A[Cliente] -->|Mensagem| B[Interface]
     B --> C[LLM]
-    C --> D[Histórico de tarefas]
-    D --> C
-    C --> E[Motor de decisão]
-    E --> F[Plano ajustado]
+    C --> D[Base de Conhecimento]
+    D --> E[Validação]
+    E --> G[Monitoramento]
+    G --> F[Resposta]
+
+
 ```
 
 ### Componentes
 
 | Componente | Descrição |
 |------------|-----------|
-| Interface | Streamlit |
-| LLM | Ollama (local) |
-| Base de Conhecimento | JSON/CSV mockados |
+| Interface | Chatbot em Streamlit |
+| LLM | OLLAMA |
+| Base de Conhecimento | JSON/CSV com dados do cliente |
+| Validação | Checagem de alucinações |
 
 ---
 
@@ -75,14 +72,16 @@ flowchart TD
 
 ### Estratégias Adotadas
 
-- [ ] Só usa dados do próprio usuário
-- [ ] Não inventa progresso
-- [ ] Questiona metas irreais
-- [ ] Pede confirmação antes de mudanças grandes
+- [ ] O Agente só responde com base nos dados fornecidos [CSV/JSOM]
+- [ ] As respostas incluem informações sempre que possível
+- [ ] O agente não faz recomendações de investimentos sem perfil do cliente
+- [ ] Implementa checagem de alucinação: respostas passam por validação antes de serem mandadas para o cliente
+- [ ] Monitoramente de interações para prevenir suspeitas e fraudes
 
 ### Limitações Declaradas
 > O que o agente NÃO faz?
-
-Não substitui acompanhamento psicológico
-Não garante resultados
-Não executa tarefas — apenas orienta
+- Recomendações financeiras sem análise do perfil
+- Interações ofensivas
+- Compartilhamento de dados sensíveis
+- Previsões de mercado ou garantias de retorno
+- Ações fora do escopo de consulta
