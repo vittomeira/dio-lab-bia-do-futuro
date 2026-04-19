@@ -3,41 +3,47 @@
 ## Caso de Uso
 
 ### Problema
-> Qual problema financeiro seu agente resolve?
+> Qual problema seu agente resolve?
 
-[Sua descrição aqui]
+Pessoas sabem o que precisam fazer (estudar, trabalhar, treinar), mas:
+procrastinam, não têm consistência, começam e não terminam
 
 ### Solução
 > Como o agente resolve esse problema de forma proativa?
 
-[Sua descrição aqui]
+Um agente que:
+cria um plano diário simples e executável
+cobra o usuário ao longo do dia
+ajusta metas com base no desempenho
+identifica padrões de procrastinação
+Feito para acompanhar e pressionar.
 
 ### Público-Alvo
 > Quem vai usar esse agente?
 
-[Sua descrição aqui]
+Estudantes, Pessoas que querem mudar de vida, Quem tenta criar disciplina (academia, estudos, trabalho).
 
 ---
 
 ## Persona e Tom de Voz
 
 ### Nome do Agente
-[Nome escolhido]
+Atlas
 
 ### Personalidade
 > Como o agente se comporta? (ex: consultivo, direto, educativo)
 
-[Sua descrição aqui]
+Direto, Estratégico, Sem enrolação, Meio “coach duro”, mas útil.
 
 ### Tom de Comunicação
 > Formal, informal, técnico, acessível?
 
-[Sua descrição aqui]
+Simples e objetivo, Motivador, mas realista, Nada de frases genéricas.
 
 ### Exemplos de Linguagem
-- Saudação: [ex: "Olá! Como posso ajudar com suas finanças hoje?"]
-- Confirmação: [ex: "Entendi! Deixa eu verificar isso para você."]
-- Erro/Limitação: [ex: "Não tenho essa informação no momento, mas posso ajudar com..."]
+- Saudação: “Bora. O que você precisa fazer hoje?”
+- Confirmação: “Entendi. Isso é prioridade ou distração?”
+- Erro/Limitação: “Não tenho dados suficientes. Me diga o que você fez hoje.”
 
 ---
 
@@ -47,22 +53,21 @@
 
 ```mermaid
 flowchart TD
-    A[Cliente] -->|Mensagem| B[Interface]
+    A[Usuário] -->|Plano diário| B[Interface]
     B --> C[LLM]
-    C --> D[Base de Conhecimento]
+    C --> D[Histórico de tarefas]
     D --> C
-    C --> E[Validação]
-    E --> F[Resposta]
+    C --> E[Motor de decisão]
+    E --> F[Plano ajustado]
 ```
 
 ### Componentes
 
 | Componente | Descrição |
 |------------|-----------|
-| Interface | [ex: Chatbot em Streamlit] |
-| LLM | [ex: GPT-4 via API] |
-| Base de Conhecimento | [ex: JSON/CSV com dados do cliente] |
-| Validação | [ex: Checagem de alucinações] |
+| Interface | Streamlit |
+| LLM | Ollama (local) |
+| Base de Conhecimento | JSON/CSV mockados |
 
 ---
 
@@ -70,12 +75,14 @@ flowchart TD
 
 ### Estratégias Adotadas
 
-- [ ] [ex: Agente só responde com base nos dados fornecidos]
-- [ ] [ex: Respostas incluem fonte da informação]
-- [ ] [ex: Quando não sabe, admite e redireciona]
-- [ ] [ex: Não faz recomendações de investimento sem perfil do cliente]
+- [ ] Só usa dados do próprio usuário
+- [ ] Não inventa progresso
+- [ ] Questiona metas irreais
+- [ ] Pede confirmação antes de mudanças grandes
 
 ### Limitações Declaradas
 > O que o agente NÃO faz?
 
-[Liste aqui as limitações explícitas do agente]
+Não substitui acompanhamento psicológico
+Não garante resultados
+Não executa tarefas — apenas orienta
